@@ -119,6 +119,8 @@ GameObject:
   m_Component:
   - component: {fileID: 202450083112300426}
   - component: {fileID: 202450083112300429}
+  - component: {fileID: 535644113}
+  - component: {fileID: 535644114}
   m_Layer: 0
   m_Name: Character_01
   m_TagString: Player
@@ -156,9 +158,45 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &535644113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202450083112300425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e070cfe0b498841871335a93f1bebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Nickname: 
+  m_Indestructible: 0
+  m_HitPoints: 100
+  m_EventOnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Mass: 1
+  m_MovementSpeed: 5000
+  m_MaxSpeed: 10
+  m_JumpForce: 1000
+  m_IsGround: 0
+--- !u!114 &535644114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202450083112300425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49799fccdf56a343b60a194b6e72ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TargetCharacter: {fileID: 535644113}

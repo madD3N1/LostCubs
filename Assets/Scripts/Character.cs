@@ -42,7 +42,7 @@ namespace LostCubs
         /// <summary>
         /// A flag that keeps track of whether the character is on the ground.
         /// </summary>
-        public bool m_IsGround;
+        private bool m_IsGround;
 
         /// <summary>
         /// Saved Rigidbody character.

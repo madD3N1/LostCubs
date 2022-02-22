@@ -66,13 +66,8 @@ namespace LostCubs
 
             if(jump > 0)
             {
-                Jump();
+                m_EventOnJump?.Invoke();
             }
-        }
-
-        private void Jump()
-        {
-            m_EventOnJump?.Invoke();
         }
 
         #endregion

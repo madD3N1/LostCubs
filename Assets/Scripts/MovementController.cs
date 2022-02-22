@@ -9,11 +9,17 @@ namespace LostCubs
     {
         #region Properties
 
+        /// <summary>
+        /// Enumeration of control options. 
+        /// </summary>
         public enum ControlMode
         {
             Keyboard
         }
 
+        /// <summary>
+        /// The target character being controlled.
+        /// </summary>
         [SerializeField] private Character m_TargetCharacter;
 
         #endregion
@@ -31,6 +37,9 @@ namespace LostCubs
 
         #region private API
 
+        /// <summary>
+        /// Method for keyboard control.
+        /// </summary>
         private void ControlKeyboard()
         {
             float dir = 0;

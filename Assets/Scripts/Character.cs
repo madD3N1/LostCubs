@@ -15,15 +15,18 @@ namespace LostCubs
         [SerializeField] private float m_Mass;
 
         /// <summary>
-        /// Character movement speed.
+        /// Forward pushing force.
         /// </summary>
-        [SerializeField] private float m_MovementSpeed;
+        [SerializeField] private float m_Thrust;
 
         /// <summary>
         /// Maximum character speed.
         /// </summary>
         [SerializeField] private float m_MaxSpeed;
 
+        /// <summary>
+        /// Jump force. 
+        /// </summary>
         [SerializeField] private float m_JumpForce;
 
         /// <summary>
@@ -31,12 +34,18 @@ namespace LostCubs
         /// </summary>
         public float DirectionMovement { get; set; }
 
+        /// <summary>
+        /// Jump power control.
+        /// </summary>
         public float JumpControl { get; set; }
 
+        /// <summary>
+        /// A flag that keeps track of whether the character is on the ground.
+        /// </summary>
         public bool m_IsGround;
 
         /// <summary>
-        /// Saved rigidbody character.
+        /// Saved Rigidbody character.
         /// </summary>
         private Rigidbody2D m_Rigidbody;
 
@@ -75,10 +84,13 @@ namespace LostCubs
 
         #region Private API
 
+        /// <summary>
+        /// Method that updates the Rigidbody.
+        /// </summary>
         private void UpdateRigidbody()
         {
-            m_Rigidbody.AddForce(m_MovementSpeed * DirectionMovement * transform.right * Time.fixedDeltaTime, ForceMode2D.Force);
-            m_Rigidbody.AddForce(-m_Rigidbody.velocity * (m_MovementSpeed / m_MaxSpeed) * Time.fixedDeltaTime, ForceMode2D.Force);
+            m_Rigidbody.AddForce(m_Thrust * DirectionMovement * transform.right * Time.fixedDeltaTime, ForceMode2D.Force);
+            m_Rigidbody.AddForce(-m_Rigidbody.velocity * (m_Thrust / m_MaxSpeed) * Time.fixedDeltaTime, ForceMode2D.Force);
 
             if(m_IsGround == true)
             {

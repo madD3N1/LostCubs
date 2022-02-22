@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LostCubs
 {
@@ -35,7 +36,13 @@ namespace LostCubs
 
         #endregion
 
-        #region private API
+        #region Public API
+
+
+
+        #endregion
+
+        #region Private API
 
         /// <summary>
         /// Method for keyboard control.
@@ -52,12 +59,25 @@ namespace LostCubs
                 dir = 1.0f;
 
             if (Input.GetKey(KeyCode.Space))
-                jump = 1.0f;
+                jump = 1.0f;    
 
             m_TargetCharacter.DirectionMovement = dir;
             m_TargetCharacter.JumpControl = jump;
+
+            if(jump > 0)
+            {
+                Jump();
+            }
+        }
+
+        private void Jump()
+        {
+            m_EventOnJump?.Invoke();
         }
 
         #endregion
+
+        [SerializeField] private UnityEvent m_EventOnJump;
+        public UnityEvent EventOnJump => m_EventOnJump;
     }
 }

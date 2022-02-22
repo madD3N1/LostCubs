@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace LostCubs
 {
@@ -34,16 +35,24 @@ namespace LostCubs
         /// </summary>
         [SerializeField] private float m_ForwardOffset;
 
+        private float m_CurrentForwardOffset;
+
         #endregion
 
         #region Unity Events
+
+        private void Start()
+        {
+            m_CurrentForwardOffset = m_ForwardOffset;
+            m_Target.GetComponent<MovementController>().EventOnJump.AddListener(OnForwardOffsetChange);
+        }
 
         private void FixedUpdate()
         {
             if (m_Target == null || m_Camera == null) return;
 
             Vector2 camPos = m_Camera.transform.position;
-            Vector2 targetPos = m_Target.position + m_Target.transform.up * m_ForwardOffset;
+            Vector2 targetPos = m_Target.position + m_Target.transform.up * m_CurrentForwardOffset;
 
             Vector2 newCamPos = Vector2.Lerp(camPos, targetPos, m_InterpolationLinear * Time.deltaTime);
 
@@ -64,5 +73,21 @@ namespace LostCubs
         }
 
         #endregion
+
+        private void OnForwardOffsetChange()
+        {
+            m_CurrentForwardOffset = 1;
+
+            // TODO: думаю, стоит обойтись без корутины. Возможно стоит добавить в MovementController еще один ивент,
+            // который срабатывает, когда прыжок равен 0 и подписаться на него.
+            StartCoroutine(ForwardOffsetChange());
+        }
+
+        IEnumerator ForwardOffsetChange()
+        {
+            yield return new WaitForSeconds(0.8f);
+
+            m_CurrentForwardOffset = m_ForwardOffset;
+        }
     }
 }

@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Mass: 1
   m_Thrust: 5000
   m_MaxSpeed: 10
-  m_JumpForce: 1000
+  m_JumpForce: 1200
   m_IsGround: 0
 --- !u!114 &535644114
 MonoBehaviour:
@@ -200,3 +200,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TargetCharacter: {fileID: 535644113}
+  m_EventOnJump:
+    m_PersistentCalls:
+      m_Calls: []
